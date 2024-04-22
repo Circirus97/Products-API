@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,22 +27,17 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(Long id) {
-        return null;
+        return this.productRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Boolean delete(Long id) {
-        return null;
+    public void delete(Long id) {
+        this.productRepository.deleteById(id);
     }
 
     @Override
-    public Product update(Long id) {
-        return null;
-    }
-
-    @Override
-    public List<Product> search(String name) {
-        return null;
+    public Product update(Product product) {
+        return this.productRepository.save(product);
     }
 
     @Override

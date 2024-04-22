@@ -22,7 +22,7 @@ public class ProductController {
         return ResponseEntity.ok(this.iProductService.getAll());
     }
 
-    @GetMapping("/FindByName/{name}")
+    @GetMapping("/findByName/{name}")
     public ResponseEntity<Product> findByName(@PathVariable String name){
         return ResponseEntity.ok(this.iProductService.findByName(name));
     }
@@ -30,6 +30,22 @@ public class ProductController {
     @PostMapping("/save")
     public ResponseEntity<Product> save(@RequestBody Product product){
         return ResponseEntity.ok(this.iProductService.save(product));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        this.iProductService.delete(id);
+        return ResponseEntity.ok("Se elimino correctamente");
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Product> update(@RequestBody Product product){
+        return ResponseEntity.ok(this.iProductService.update(product));
+    }
+
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Long id){
+        return ResponseEntity.ok(this.iProductService.findById(id));
     }
 
 
