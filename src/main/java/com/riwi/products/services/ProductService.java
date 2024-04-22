@@ -3,21 +3,20 @@ package com.riwi.products.services;
 import com.riwi.products.entities.Product;
 import com.riwi.products.repositories.ProductRepository;
 import com.riwi.products.services.service_abstract.IProductService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ProductService implements IProductService {
-    @Autowired
+
     private final ProductRepository productRepository;
 
     @Override
     public Product save(Product product) {
-        return null;
+        return this.productRepository.save(product);
     }
 
     @Override
@@ -43,5 +42,10 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> search(String name) {
         return null;
+    }
+
+    @Override
+    public Product findByName(String name) {
+        return this.productRepository.findByName(name);
     }
 }

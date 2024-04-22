@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface IProductService {
 
-
         Product save(Product product);
 
         List<Product> getAll();
@@ -18,5 +17,7 @@ public interface IProductService {
         Product update(Long id);
 
         List<Product> search(String name);
+
+        Product findByName(String name);
         
 }
